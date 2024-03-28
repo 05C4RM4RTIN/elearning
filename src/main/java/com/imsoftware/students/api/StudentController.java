@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.imsoftware.students.domain.StudentDTO;
+import com.imsoftware.students.model.ModaVO;
 import com.imsoftware.students.model.StudentHaveVO;
 import com.imsoftware.students.service.IStudentService;
 
@@ -25,8 +26,13 @@ public class StudentController {
 		return studentService.findAll();
 	}
 	
-	@GetMapping("/modaBy")
-	List<StudentHaveVO> modaByStudent() {
+	@GetMapping("/modaByStudents")
+	List<StudentHaveVO> getModaByStudent() {
 		return studentService.findAllAndShowIfHaveAPopularSubject();
+	}
+	
+	@GetMapping("/getSubjectMode")
+	List<ModaVO> getSubjectMode() {
+		return studentService.getMode();
 	}
 }

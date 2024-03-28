@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.imsoftware.students.domain.StudentDTO;
 import com.imsoftware.students.entity.Student;
 import com.imsoftware.students.entity.Subject;
+import com.imsoftware.students.model.ModaVO;
 import com.imsoftware.students.model.StudentHaveVO;
 import com.imsoftware.students.service.IStudentService;
 
@@ -52,5 +53,11 @@ public class StudentServiceImpl implements IStudentService {
 		// indicar si el estudiante cursa o no la materia más concurrida registrado en la BD.
 		//return null;
 	}
+	
+	@Override 
+	public List<ModaVO> getMode(){
+		
+		return subjectRepository.getSubjectModeDesc();
+		}
 
 }

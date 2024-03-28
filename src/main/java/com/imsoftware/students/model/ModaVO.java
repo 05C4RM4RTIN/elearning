@@ -1,6 +1,7 @@
 package com.imsoftware.students.model;
 
-public interface StudentHaveVO {
-	int getHave();
+public interface ModaVO {
+	int getId();
 	String getName();
+
 }

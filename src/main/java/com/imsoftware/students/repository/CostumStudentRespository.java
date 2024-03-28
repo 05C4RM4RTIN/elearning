@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.imsoftware.students.entity.Student;
 import com.imsoftware.students.entity.Subject;
+import com.imsoftware.students.model.ModaVO;
 import com.imsoftware.students.model.StudentHaveVO;
 
 public interface CostumStudentRespository extends JpaRepository<Subject, Integer> {
@@ -35,5 +36,14 @@ public interface CostumStudentRespository extends JpaRepository<Subject, Integer
 			"ON SS.SUBJECT_ID = SUB.ID\n" + 
 			"ORDER BY ID",nativeQuery = true)
 	public int getSubjectMode();
+	
+	
+	@Query ( value = "SELECT MODE(SUB.ID )  ID,MODE(SUB.NAME) NAME FROM STUDENT S\n" + 
+			"JOIN SUBJECT_STUDENT SS \n" + 
+			"ON S.ID =SS.STUDENT_ID \n" + 
+			"JOIN SUBJECT SUB\n" + 
+			"ON SS.SUBJECT_ID = SUB.ID\n" + 
+			"ORDER BY ID",nativeQuery = true)
+	public List<ModaVO> getSubjectModeDesc();
 
 }
